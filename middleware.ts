@@ -18,6 +18,9 @@ const ANONYMOUS_PATHS = [
   "/sign-up",
   "/verify-account-advice",
   "/verify-account",
+  "/request-password-reset",
+  "/password-reset-requested",
+  "/reset-password",
 ]
 
 function isAnonymousPath(path: string) {

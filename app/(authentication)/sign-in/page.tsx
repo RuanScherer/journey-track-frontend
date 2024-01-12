@@ -19,6 +19,12 @@ export default function SignIn() {
       <Link href="/sign-up" className="text-sm text-center mx-auto">
         Create an account
       </Link>
+
+      <p className="text-sm text-center text-gray-500 mx-auto mt-2">
+        <Link href="/request-password-reset">
+          Request a password reset
+        </Link>
+      </p>
     </>
   )
 }
