@@ -1,3 +1,4 @@
+import { SessionProvider } from "@/contexts/Session";
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} w-screen min-h-screen h-screen bg-gray-50`}>
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
         <ToastContainer />
       </body>
     </html>

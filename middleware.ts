@@ -1,3 +1,4 @@
+import { ANONYMOUS_PATHS } from "@/shared/constants";
 import { NextRequest, NextResponse } from "next/server";
 
 export const config = {
@@ -13,22 +14,11 @@ export const config = {
   ]
 }
 
-const ANONYMOUS_PATHS = [
-  "/sign-in",
-  "/sign-up",
-  "/verify-account-advice",
-  "/verify-account",
-  "/request-password-reset",
-  "/password-reset-requested",
-  "/reset-password",
-]
-
 function isAnonymousPath(path: string) {
   return ANONYMOUS_PATHS.includes(path)
 }
 
 export function middleware(request: NextRequest) {
-
   const requestHeaders = new Headers(request.headers)
   requestHeaders.set("x-url", request.url)
 

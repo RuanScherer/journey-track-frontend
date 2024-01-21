@@ -1,11 +1,8 @@
 "use client"
 
 import { Input } from "@/app/(authentication)/_components/Input"
-import { backendClient } from "@/config/api/backend"
-import { BackendErrorUtils } from "@/shared/utils/backendError"
-import { showDefaultErrorToast } from "@/shared/utils/toast"
+import { useSession } from "@/contexts/Session"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { AxiosError } from "axios"
 import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
 import * as z from "zod"
@@ -25,19 +22,10 @@ export function SignInForm() {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema)
   })
+  const session = useSession()
 
   async function handleSignIn(data: FormData) {
-    try {
-      await backendClient.post("/v1/signin", data)
-      router.replace("/home")
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("signin", error)
-      } else {
-        showDefaultErrorToast()
-      }
-      console.error(error)
-    }
+    session?.signIn(data.email, data.password)
   }
 
   return (
