@@ -48,7 +48,7 @@ export function RequestPasswordResetForm() {
           placeholder="example@example.com"
         />
 
-        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500">
+        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
           Send
         </button>
       </form>

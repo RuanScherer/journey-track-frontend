@@ -71,7 +71,7 @@ export function ResetPasswordForm() {
           placeholder="Confirm your secret password"
         />
 
-        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500">
+        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
           Confirm
         </button>
       </form>

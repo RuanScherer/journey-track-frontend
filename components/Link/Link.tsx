@@ -9,7 +9,7 @@ export function Link(props: LinkProps) {
   return (
     <NextLink
       {...props}
-      className={`${props.className} text-primary-400 underline underline-offset-2 hover:text-primary-500`}
+      className={`${props.className} text-primary-400 underline underline-offset-2 hover:text-primary-500 transition`}
     />
   )
 }

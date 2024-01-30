@@ -3,7 +3,6 @@
 import { Input } from "@/app/(authentication)/_components/Input"
 import { useSession } from "@/contexts/Session"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -18,7 +17,6 @@ const formSchema = z.object({
 })
 
 export function SignInForm() {
-  const router = useRouter()
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema)
   })
@@ -45,7 +43,7 @@ export function SignInForm() {
           placeholder="Your secret password"
         />
 
-        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500">
+        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
           Sign in
         </button>
       </form>
