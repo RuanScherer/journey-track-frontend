@@ -1,6 +1,6 @@
 "use client"
 
-import { Input } from "@/app/(authentication)/_components/Input"
+import { Input } from "@/components/Input"
 import { backendClient } from "@/config/api/backend"
 import { BackendErrorUtils } from "@/shared/utils/backendError"
 import { showDefaultErrorToast } from "@/shared/utils/toast"
@@ -79,7 +79,7 @@ export function SignUpForm() {
           placeholder="Confirm your secret password"
         />
 
-        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
+        <button type="submit" className="text-neutral-50 bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
           Create account
         </button>
       </form>

@@ -69,3 +69,11 @@ html {
 .DialogCloseButton:hover {
   @apply bg-primary-100;
 }
+
+.DialogCancelButton {
+  @apply text-sm rounded px-3 py-2 mt-3 hover:bg-gray-200 transition;
+}
+
+.DialogActionButton {
+  @apply text-sm text-neutral-50 bg-primary-400 rounded px-3 py-2 mt-3 hover:bg-primary-500 transition;
+}

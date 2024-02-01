@@ -18,22 +18,8 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   useEffect(() => {
-    async function getSignedInUser() {
-      try {
-        if (user || ANONYMOUS_PATHS.includes(pathname)) return
-
-        const response = await backendClient.get<SessionUser>("/v1/users/profile")
-        setUser(response.data)
-      } catch (error) {
-        if (error instanceof AxiosError) {
-          BackendErrorUtils.showToast("user_profile", error)
-        } else {
-          showDefaultErrorToast()
-        }
-        console.error(error)
-      }
-    }
-    getSignedInUser()
+    if (user || ANONYMOUS_PATHS.includes(pathname)) return
+    loadUserProfile()
   }, [])
 
   async function signIn(email: string, password: string) {
@@ -62,8 +48,26 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  async function loadUserProfile() {
+    try {
+      const response = await backendClient.get<SessionUser>("/v1/users/profile")
+      setUser(response.data)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        BackendErrorUtils.showToast("user_profile", error)
+      } else {
+        showDefaultErrorToast()
+      }
+      console.error(error)
+    }
+  }
+
+  async function refreshUserProfile() {
+    loadUserProfile()
+  }
+
   return (
-    <SessionContext.Provider value={{ user, signIn, signOut }}>
+    <SessionContext.Provider value={{ user, signIn, signOut, refreshUserProfile }}>
       {children}
     </SessionContext.Provider>
   )

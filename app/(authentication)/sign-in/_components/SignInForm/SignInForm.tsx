@@ -1,6 +1,6 @@
 "use client"
 
-import { Input } from "@/app/(authentication)/_components/Input"
+import { Input } from "@/components/Input"
 import { useSession } from "@/contexts/Session"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
@@ -43,7 +43,7 @@ export function SignInForm() {
           placeholder="Your secret password"
         />
 
-        <button type="submit" className="bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
+        <button type="submit" className="text-neutral-50 bg-primary-400 rounded p-2 mt-2 hover:bg-primary-500 transition">
           Sign in
         </button>
       </form>

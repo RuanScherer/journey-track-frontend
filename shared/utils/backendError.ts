@@ -30,6 +30,13 @@ const ERROR_MESSAGES_BY_CODE: Record<string, string> = {
   "create_project.invalid_request_data": "It looks like the information you entered is not valid. Please, try again.",
   "create_project.project_owner_not_found": "We couldn't establish your identity to create a project. Please, sign in again.",
   "create_project.unable_to_create_project": "We couldn't establish your identity to create a project. Please, sign in again.",
+
+  // edit_profile
+  "edit_profile.invalid_request_data": "It looks like the data you're trying to save is not valid. Please, try again.",
+  "edit_profile.user_not_found": "We couldn't find your account. Please, sign in again.",
+  "edit_profile.unable_to_find_user": "We couldn't find your account. Please, sign in again.",
+  "edit_profile.unable_to_edit_user": "We couldn't update your profile. Please, try again.",
+  "edit_profile.unable_to_save_user_changes": "We couldn't update your profile. Please, try again.",
 }
 
 function showToast(context: string, error: AxiosError<BackendError>) {

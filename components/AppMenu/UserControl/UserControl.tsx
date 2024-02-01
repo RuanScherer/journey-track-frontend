@@ -2,7 +2,7 @@
 
 import { useSession } from "@/contexts/Session"
 import "@/styles/animations.css"
-import { Gear, SignOut, User } from "@phosphor-icons/react"
+import { Gear, SignOut } from "@phosphor-icons/react"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import Link from "next/link"
 import { useRef } from "react"
@@ -45,11 +45,11 @@ export function UserControl() {
               </DropdownMenu.Label>
               <DropdownMenu.Item asChild>
                 <Link
-                  href="/profile"
+                  href="/settings"
                   className="flex items-center px-3 py-1.5 text-sm rounded hover:bg-neutral-100"
                 >
-                  <User className="mr-1" weight="bold" />
-                  Profile
+                  <Gear className="mr-1" weight="bold" />
+                  Settings
                 </Link>
               </DropdownMenu.Item>
             </DropdownMenu.DropdownMenuGroup>
