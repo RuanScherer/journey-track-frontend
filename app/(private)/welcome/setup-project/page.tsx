@@ -3,7 +3,7 @@ import { CreateProjectForm } from "./_components/CreateProjectForm";
 
 export default function SetupProject() {
   return (
-    <main className="flex flex-col items-center my-10 mx-auto p-1.5 max-w-2xl">
+    <main className="flex flex-col items-center my-10 mx-auto p-2 max-w-2xl">
       <Stepper
         steps={[
           {

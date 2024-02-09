@@ -37,6 +37,13 @@ const ERROR_MESSAGES_BY_CODE: Record<string, string> = {
   "edit_profile.unable_to_find_user": "We couldn't find your account. Please, sign in again.",
   "edit_profile.unable_to_edit_user": "We couldn't update your profile. Please, try again.",
   "edit_profile.unable_to_save_user_changes": "We couldn't update your profile. Please, try again.",
+
+  // invite_project_members
+  "invite_project_members.invalid_request_data": "We couldn't send the invitations. Please, try again.",
+  "invite_project_members.unable_to_save_invites": "We couldn't send the invitations. Please, try again.",
+  "invite_project_members.not_project_member": "It looks like you're not a member of this project, so you can't invite anyone.",
+  "invite_project_members.user_not_found": "We couldn't find some user you're trying to invite. Please, try again.",
+  "invite_project_members.unable_to_invite_user": "We couldn't send the invitations. Please, try again.",
 }
 
 function showToast(context: string, error: AxiosError<BackendError>) {

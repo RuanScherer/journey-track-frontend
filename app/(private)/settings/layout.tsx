@@ -12,7 +12,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
   const session = useSession()
 
   return (
-    <div className="grid grid-cols-12 gap-5 my-5 mx-auto p-1.5 max-w-5xl">
+    <div className="grid grid-cols-12 gap-5 my-5 mx-auto p-2 max-w-5xl">
       <header className="col-span-12 flex items-center gap-2.5">
         <User className="w-10 h-10 text-gray-600 bg-gray-200 rounded-full p-1.5" />
 

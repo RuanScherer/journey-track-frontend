@@ -23,7 +23,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex flex-col items-stretch my-5 mx-auto p-1.5 max-w-5xl">
+    <main className="flex flex-col items-stretch my-5 mx-auto p-2 max-w-5xl">
       <h1 className="text-2xl font-bold">Projects</h1>
       <p className="text-sm mt-1 leading-tight text-neutral-700">
         Here are all the projects you own or are a member of.

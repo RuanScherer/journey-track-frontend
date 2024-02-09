@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import * as zod from "zod"
 
-export interface FormData {
+interface FormData {
   name: string
 }
 
