@@ -2,7 +2,7 @@
 
 import { backendClient } from "@/config/api/backend";
 import { GetProjectStatsResponseDTO } from "@/shared/dto/projects/GetProjectStatsResponseDTO";
-import { PlayCircle } from "@phosphor-icons/react";
+import { PlayCircle, X } from "@phosphor-icons/react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { useEffect, useState } from "react";
 import { FloatingProjectOnboardingProps } from "./FloatingProjectOnboarding.types";
@@ -12,7 +12,12 @@ const STEPS_COUNT = 2
 
 export function FloatingProjectOnboarding(props: FloatingProjectOnboardingProps) {
   const [onboardingStatus, setOnboardingStatus] = useState<GetProjectStatsResponseDTO>()
+
   useEffect(() => {
+    if (localStorage.getItem(`@trackr:project-${props.projectId}-onboarding-dismissed`) === "true") {
+      return
+    }
+
     async function getProjectOnboardingStatus(projectId: string) {
       try {
         const response = await backendClient.get<GetProjectStatsResponseDTO>(`v1/projects/${projectId}/stats`)
@@ -25,6 +30,11 @@ export function FloatingProjectOnboarding(props: FloatingProjectOnboardingProps)
   }, [props.projectId])
 
   if (!onboardingStatus) return null
+
+  function handleDismissOnboarding() {
+    localStorage.setItem(`@trackr:project-${props.projectId}-onboarding-dismissed`, "true")
+    setOnboardingStatus(undefined)
+  }
 
   function getCompletedStepsCount() {
     let count = 0
@@ -56,14 +66,26 @@ export function FloatingProjectOnboarding(props: FloatingProjectOnboardingProps)
       </Collapsible.Content >
 
       <Collapsible.Trigger asChild>
-        <button className="flex items-center gap-2 p-2.5 text-sm w-full text-white bg-primary-500 rounded shadow-md hover:bg-primary-600 group-data-[state=open]:rounded-b group-data-[state=open]:rounded-t-none transition-all">
-          <PlayCircle size={24} weight="bold" />
-          <div className="flex flex-col items-start gap-0.5">
-            <span className="font-medium">Get started</span>
-            <span className="text-xs font-normal leading-none">
-              {getCompletedStepsCount()} of {STEPS_COUNT} steps completed
-            </span>
+        <button className="flex items-center justify-between gap-2 p-2.5 text-sm w-full text-white bg-primary-500 rounded shadow-md hover:bg-primary-600 group-data-[state=open]:rounded-b group-data-[state=open]:rounded-t-none transition-all">
+          <div className="flex flex-items gap-2">
+            <PlayCircle size={24} weight="bold" />
+            <div className="flex flex-col items-start gap-0.5">
+              <span className="font-medium">Get started</span>
+              <span className="text-xs font-normal leading-none">
+                {getCompletedStepsCount()} of {STEPS_COUNT} steps completed
+              </span>
+            </div>
           </div>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              handleDismissOnboarding()
+            }}
+            className="ml-2 p-1 cursor-pointer rounded hover:bg-primary-500"
+          >
+            <X size={16} weight="bold" />
+          </button>
         </button>
       </Collapsible.Trigger>
     </Collapsible.Root >
