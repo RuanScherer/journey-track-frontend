@@ -67,7 +67,7 @@ export function FloatingProjectOnboarding(props: FloatingProjectOnboardingProps)
 
       <Collapsible.Trigger asChild>
         <button className="flex items-center justify-between gap-2 p-2.5 text-sm w-full text-white bg-primary-500 rounded shadow-md hover:bg-primary-600 group-data-[state=open]:rounded-b group-data-[state=open]:rounded-t-none transition-all">
-          <div className="flex flex-items gap-2">
+          <div className="flex items-center gap-2">
             <PlayCircle size={24} weight="bold" />
             <div className="flex flex-col items-start gap-0.5">
               <span className="font-medium">Get started</span>
