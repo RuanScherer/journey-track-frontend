@@ -40,7 +40,7 @@ export function SignUpForm() {
       router.push("/verify-account-advice")
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("register_user", error)
+        BackendErrorUtils.showToast("register_user", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -51,28 +51,28 @@ export function SignUpForm() {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(handleSignUp)} className="flex flex-col items-stretch gap-3 w-[350px] max-w-full">
-        <Input
+        <Input.WithValidation
           name="name"
           label="Name"
           type="text"
           placeholder="John Doe"
         />
 
-        <Input
+        <Input.WithValidation
           name="email"
           label="Email"
           type="text"
           placeholder="example@example.com"
         />
 
-        <Input
+        <Input.WithValidation
           name="password"
           label="Password"
           type="password"
           placeholder="Your secret password"
         />
 
-        <Input
+        <Input.WithValidation
           name="passwordConfirmation"
           label="Password confirmation"
           type="password"

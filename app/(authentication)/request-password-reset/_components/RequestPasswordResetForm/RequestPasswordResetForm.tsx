@@ -30,7 +30,7 @@ export function RequestPasswordResetForm() {
       router.push("/password-reset-requested")
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("request_password_reset", error)
+        BackendErrorUtils.showToast("request_password_reset", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -41,7 +41,7 @@ export function RequestPasswordResetForm() {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(handleRequestPasswordReset)} className="flex flex-col items-stretch gap-3 w-[350] max-w-full">
-        <Input
+        <Input.WithValidation
           name="email"
           label="Email"
           type="text"

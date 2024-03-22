@@ -17,6 +17,7 @@ export function InviteMembersProvider({ children, projectId }: InviteMembersProv
       const response = await backendClient.get<SearchUsersResponseDTO>(`v1/users/search`, {
         params: {
           email: data.email,
+          excluded_project_ids: data.excludedProjectIds?.join(","),
           page: 1, // fixed so user need to aprimorate the search, no pagination
           page_size: 10,
         }

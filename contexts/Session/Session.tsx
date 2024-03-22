@@ -29,7 +29,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       router.replace("/home")
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("signin", error)
+        BackendErrorUtils.showToast("signin", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -54,7 +54,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
       setUser(response.data)
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("user_profile", error)
+        BackendErrorUtils.showToast("user_profile", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }

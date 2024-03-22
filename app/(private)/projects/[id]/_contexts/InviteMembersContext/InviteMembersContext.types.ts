@@ -10,7 +10,8 @@ export interface InviteMembersContextData {
 }
 
 export interface UserSearchParams {
-  email: string
+  excludedProjectIds?: string[]
+  email?: string
 }
 
 export interface InviteMembersProviderProps {

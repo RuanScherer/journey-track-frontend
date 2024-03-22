@@ -19,7 +19,7 @@ export function InviteMembersConfirmation() {
       router.push(`/projects/${routeParams.id}`)
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("create_project", error)
+        BackendErrorUtils.showToast("create_project", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -46,7 +46,7 @@ export function InviteMembersConfirmation() {
         <>
           <ul className="mt-2">
             {selectedUsersToInvite.map((user) => (
-              <li key={user.id} className="flex items-center justify-between gap-0.5 border-b border-b-gray-200 last:border-b-0">
+              <li key={user.id} className="flex items-center justify-between gap-0.5 border-b-2 border-b-gray-200 last:border-b-0">
                 <div className="py-1 my-1">
                   <h3 className="text-sm leading-tight">{user.name}</h3>
                   <p className="text-xs text-neutral-500 leading-snug break-all">{user.email}</p>

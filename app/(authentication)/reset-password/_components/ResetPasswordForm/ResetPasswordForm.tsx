@@ -46,7 +46,7 @@ export function ResetPasswordForm() {
       router.replace("/sign-in")
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("reset_password", error)
+        BackendErrorUtils.showToast("reset_password", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -57,14 +57,14 @@ export function ResetPasswordForm() {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(handleResetPassword)} className="flex flex-col items-stretch gap-3 w-[350px] max-w-full">
-        <Input
+        <Input.WithValidation
           name="password"
           label="Password"
           type="password"
           placeholder="Your secret password"
         />
 
-        <Input
+        <Input.WithValidation
           name="passwordConfirmation"
           label="Password confirmation"
           type="password"

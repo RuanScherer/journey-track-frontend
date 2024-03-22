@@ -34,7 +34,7 @@ export function CreateProjectForm() {
       router.replace("/home")
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("create_project", error)
+        BackendErrorUtils.showToast("create_project", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }

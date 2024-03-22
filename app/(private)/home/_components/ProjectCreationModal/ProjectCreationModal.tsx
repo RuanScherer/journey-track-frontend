@@ -41,7 +41,7 @@ export function ProjectCreationModal(props: { children: React.ReactNode }) {
       setIsOpen(false)
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("create_project", error)
+        BackendErrorUtils.showToast("create_project", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }

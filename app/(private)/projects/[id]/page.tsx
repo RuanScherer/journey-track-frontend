@@ -2,10 +2,11 @@ import { BackButton } from "@/components/BackButton"
 import { backendServerSideClient } from "@/config/api/backend"
 import { ShowProjectResponseDTO } from "@/shared/dto/projects/ShowProjectResponseDTO"
 import { showToast } from "@/shared/utils/toast"
+import { Gear } from "@phosphor-icons/react/dist/ssr"
 import { cookies } from "next/headers"
+import Link from "next/link"
 import { redirect } from "next/navigation"
 import { FloatingProjectOnboarding } from "../_components/FloatingProjectOnboarding"
-import { ProjectSettingsLink } from "./_components/ProjectSettingsLink"
 
 interface ProjectPageProps {
   params: {
@@ -40,7 +41,15 @@ export default async function Project({ params }: ProjectPageProps) {
           <h1 className="text-3xl font-bold leading-none">{project.name}</h1>
         </div>
 
-        <ProjectSettingsLink project={project} />
+        {project.is_owner &&
+          <Link
+            href={`/projects/${project.id}/settings`}
+            className="flex items-center gap-1 p-1.5 text-gray-700 text-sm font-medium cursor-pointer rounded bg-gray-200 hover:bg-gray-300 transition"
+          >
+            <Gear size={16} weight="bold" />
+            Settings
+          </Link>
+        }
       </header>
 
       <FloatingProjectOnboarding projectId={project.id} />

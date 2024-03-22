@@ -41,7 +41,7 @@ export default function ProfileSettings() {
       session?.refreshUserProfile()
     } catch (error) {
       if (error instanceof AxiosError) {
-        BackendErrorUtils.showToast("edit_profile", error)
+        BackendErrorUtils.showToast("edit_profile", error.response?.data?.code)
       } else {
         showDefaultErrorToast()
       }
@@ -73,7 +73,7 @@ export default function ProfileSettings() {
           onSubmit={form.handleSubmit(handleSaveChanges)}
           className="max-w-md mt-4 flex flex-col items-stretch gap-3"
         >
-          <Input
+          <Input.WithValidation
             label="Name"
             name="name"
             placeholder="Your name"
@@ -81,7 +81,7 @@ export default function ProfileSettings() {
             className="bg-gray-200 bg-opacity-70"
           />
 
-          <Input
+          <Input.WithValidation
             label="Email"
             name="email"
             placeholder="Your email address"

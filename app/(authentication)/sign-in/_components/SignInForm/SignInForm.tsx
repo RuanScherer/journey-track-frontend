@@ -29,14 +29,14 @@ export function SignInForm() {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(handleSignIn)} className="flex flex-col items-stretch gap-3 w-[350px] max-w-full">
-        <Input
+        <Input.WithValidation
           name="email"
           label="Email"
           type="text"
           placeholder="example@example.com"
         />
 
-        <Input
+        <Input.WithValidation
           name="password"
           label="Password"
           type="password"

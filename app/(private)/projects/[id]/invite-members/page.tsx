@@ -1,13 +1,12 @@
 import { BackButton } from "@/components/BackButton";
-import { Stepper } from "@/components/Stepper";
 import { backendServerSideClient } from "@/config/api/backend";
 import { ShowProjectResponseDTO } from "@/shared/dto/projects/ShowProjectResponseDTO";
 import { showToast } from "@/shared/utils/toast";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { InviteMembersConfirmation } from "../../_components/InviteMembersConfirmation";
-import { InviteMembersForm } from "../../_components/InviteMembersForm";
-import { InviteMembersProvider } from "../../_contexts/InviteMembersContext";
+import { InviteMembersConfirmation } from "../_components/InviteMembersConfirmation";
+import { InviteMembersForm } from "../_components/InviteMembersForm";
+import { InviteMembersProvider } from "../_contexts/InviteMembersContext";
 
 interface ProjectPageProps {
   params: {
@@ -36,24 +35,6 @@ export default async function ProjectOnboardingInviteMembersPage({ params }: Pro
     <main className="grid grid-cols-12 gap-3 my-5 mx-auto p-2 max-w-5xl">
       <div className="col-span-12">
         <BackButton />
-      </div>
-
-      <div className="col-span-12 flex justify-center">
-        <Stepper
-          showDots={false}
-          steps={[
-            {
-              id: "create-project",
-              label: "Create a project",
-              active: false,
-            },
-            {
-              id: "invite-members",
-              label: "Invite members",
-              active: true,
-            },
-          ]}
-        />
       </div>
 
       <InviteMembersProvider projectId={project.id}>

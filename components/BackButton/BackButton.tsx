@@ -11,7 +11,7 @@ export function BackButton() {
       onClick={back}
       className="flex items-center gap-1 p-1 w-fit rounded text-sm cursor-pointer hover:bg-gray-200 transition"
     >
-      <ArrowLeft />
+      <ArrowLeft weight="bold" />
       Back
     </button>
   )

@@ -6,6 +6,10 @@ import * as zod from "zod"
 import { useInviteMembers } from "../../_contexts/InviteMembersContext"
 import { UserSearchResultItem } from "./UserSearchResultItem"
 
+interface InviteMembersFormProps {
+  projectId: string
+}
+
 interface FormData {
   email: string
 }
@@ -14,16 +18,20 @@ const formSchema = zod.object({
   email: zod.string().min(3, "Enter at least 3 characters to start searching for users"),
 })
 
-export function InviteMembersForm() {
+export function InviteMembersForm(props: InviteMembersFormProps) {
   const { handleSearchUsers, searchResults } = useInviteMembers()
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
   })
 
+  function handleSearch(data: FormData) {
+    handleSearchUsers({ ...data, excludedProjectIds: [props.projectId] })
+  }
+
   return (
     <div>
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(handleSearchUsers)} className="flex items-center justify-stretch flex-wrap gap-x-2 mt-6">
+        <form onSubmit={form.handleSubmit(handleSearch)} className="flex items-center justify-stretch flex-wrap gap-x-2 mt-6">
           <label htmlFor="email" className="w-full text-sm text-neutral-600 mb-1">
             Search users by email
           </label>

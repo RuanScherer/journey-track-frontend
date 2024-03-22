@@ -1,5 +1,3 @@
-import { AxiosError } from "axios"
-import { BackendError } from "../dto/BackendError"
 import { DEFAULT_ERROR_TOAST_MESSAGE, showToast as showDefaultToast } from "./toast"
 
 const ERROR_MESSAGES_BY_CODE: Record<string, string> = {
@@ -44,10 +42,35 @@ const ERROR_MESSAGES_BY_CODE: Record<string, string> = {
   "invite_project_members.not_project_member": "It looks like you're not a member of this project, so you can't invite anyone.",
   "invite_project_members.user_not_found": "We couldn't find some user you're trying to invite. Please, try again.",
   "invite_project_members.unable_to_invite_user": "We couldn't send the invitations. Please, try again.",
+
+  // delete_project
+  "delete_project.invalid_request_data": "We couldn't remove the project. Please, try again.",
+  "delete_project.project_not_found": "We couldn't find the project you're trying to remove. Please, try again.",
+  "delete_project.not_project_owner": "It looks like you're not the owner of this project, so you can't remove it.",
+
+  // edit_project
+  "edit_project.invalid_request_data": "It looks like the data you're trying to save is not valid. Please, try again.",
+  "edit_project.project_not_found": "We couldn't find the project you're trying to update. Please, try again.",
+  "edit_project.not_project_owner": "It looks like you're not the owner of this project, so you can't update it.",
+
+  // show_project
+  "show_project.project_not_found": "We couldn't find the project. Please, try again.",
+  "show_project.not_project_member": "It looks like you're not a member of this project, so you can't see its details.",
+
+  // list_project_invites
+  "list_project_invites.project_not_found": "We couldn't find the project. Please, try again.",
+  "list_project_invites.not_project_member": "It looks like you're not a member of this project, so you can't see its invites.",
+
+  // revoke_invite
+  "revoke_invite.invalid_request_data": "We couldn't revoke the invitation. Please, try again.",
+  "revoke_invite.project_invite_not_found": "We couldn't find the invitation you're trying to revoke. Please, try again.",
+  "revoke_invite.unable_to_revoke_project_invite": "The invitation you're trying to revoke is already answered or revoked.",
+  "revoke_invite.unable_to_identify_user": "Sorry, we couldn't identify you, so we couldn't complete your request. Please, try again.",
+  "revoke_invite.not_project_member": "It looks like you're not a member of this project, so you can't revoke any invitation.",
 }
 
-function showToast(context: string, error: AxiosError<BackendError>) {
-  let errorMessage = ERROR_MESSAGES_BY_CODE[context + "." + error.response?.data?.code]
+function showToast(context: string, error?: string) {
+  let errorMessage = ERROR_MESSAGES_BY_CODE[context + "." + error]
   if (!errorMessage) {
     errorMessage = ERROR_MESSAGES_BY_CODE["unexpected_error"]
   }
