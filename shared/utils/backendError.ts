@@ -67,6 +67,14 @@ const ERROR_MESSAGES_BY_CODE: Record<string, string> = {
   "revoke_invite.unable_to_revoke_project_invite": "The invitation you're trying to revoke is already answered or revoked.",
   "revoke_invite.unable_to_identify_user": "Sorry, we couldn't identify you, so we couldn't complete your request. Please, try again.",
   "revoke_invite.not_project_member": "It looks like you're not a member of this project, so you can't revoke any invitation.",
+
+  // accept_project_invitation
+  "accept_project_invitation.invalid_request_data": "It seems that some information is missing to accept the invitation. Please, try again.",
+  "accept_project_invitation.project_invite_not_found": "We couldn't find the invitation you're trying to accept. Please, try again.",
+  "accept_project_invitation.unable_to_find_project_invite": "We couldn't find the invitation you're trying to accept. Please, try again.",
+  "accept_project_invitation.unable_to_accept_project_invite": "The invitation you're trying to accept is already answered or revoked.",
+  "accept_project_invitation.project_not_found": "We couldn't find the project you're trying to join. Please, try again.",
+  "accept_project_invitation.unable_to_find_project": "We couldn't find the project you're trying to join. Please, try again.",
 }
 
 function showToast(context: string, error?: string) {

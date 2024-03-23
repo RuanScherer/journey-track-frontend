@@ -1,8 +1,6 @@
 import { EInvitationStatus } from "./EInvitationStatus"
 
-export type ListProjectInvitesResponseDTO = ProjectInvite[]
-
-export interface ProjectInvite {
+export interface ShowInvitationByProjectAndTokenResponseDTO {
   id: string
   project: InviteProject
   user: InviteUser
