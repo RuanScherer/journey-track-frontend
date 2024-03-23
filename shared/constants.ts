@@ -5,5 +5,4 @@ export const ANONYMOUS_PATHS = [
   "/verify-account",
   "/request-password-reset",
   "/password-reset-requested",
-  "/reset-password",
 ]
