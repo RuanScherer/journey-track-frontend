@@ -61,7 +61,7 @@ export function ProjectRemovalButton(props: ProjectRemovalButtonProps) {
     <>
       <Dialog.Root onOpenChange={(isOpen) => !isOpen && reset()}>
         <Dialog.Trigger asChild>
-          <button className="w-fit text-sm text-red-500 bg-red-100 rounded px-3 py-2 mt-3 hover:bg-red-200 transition">
+          <button className="w-fit text-sm text-red-500 bg-red-100 rounded px-3 py-2 hover:bg-red-200 transition">
             Delete project
           </button>
         </Dialog.Trigger>

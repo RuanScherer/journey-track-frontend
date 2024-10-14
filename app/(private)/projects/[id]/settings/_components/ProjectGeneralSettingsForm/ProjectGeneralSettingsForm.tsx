@@ -28,7 +28,7 @@ export function ProjectGeneralSettingsForm({ project }: ProjectGeneralSettingsFo
   return (
     <form
       action={formAction}
-      className="max-w-md flex flex-col items-stretch gap-3"
+      className="flex flex-col items-stretch gap-3"
     >
       {/* used to send the project id to the server action */}
       <input

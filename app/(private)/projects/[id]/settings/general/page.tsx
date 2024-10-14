@@ -1,6 +1,7 @@
 import { getProject } from "../_cache/getProject"
 import { ProjectGeneralSettingsForm } from "../_components/ProjectGeneralSettingsForm"
 import { ProjectRemovalButton } from "./_components/ProjectRemovalButton"
+import {ProjectTokenViewer} from "@/app/(private)/projects/[id]/settings/general/_components/ProjectTokenViewer";
 
 interface ProjectGeneralSettingsPageProps {
   params: {
@@ -40,28 +41,38 @@ export default async function ProjectGeneralSettings({ params }: ProjectGeneralS
   }
 
   return (
-    <div className="flex flex-col items-stretch gap-4">
-      <h1 className="text-2xl font-medium">General</h1>
+      <div className="flex flex-col items-stretch gap-4">
+          <h1 className="text-2xl font-medium">General</h1>
 
-      <section>
-        <ProjectGeneralSettingsForm project={project} />
-      </section>
+          <section className="max-w-md">
+              <ProjectGeneralSettingsForm project={project}/>
+          </section>
 
-      <hr className="border-neutral-200" />
+          <hr className="border-neutral-200"/>
 
-      <section>
-        <h2 className="text-xl font-medium text-red-500">
-          Danger zone
-        </h2>
+          <section>
+              <h2 className="text-xl font-medium">Project token</h2>
+              <p className="text-sm text-gray-600 mb-3">
+                  You will use this token to setup the SDK and get ready to use this project.
+              </p>
 
-        <p className="text-sm text-gray-600">
-          Once you delete a project, there is no going back. Please be certain.
-        </p>
+              <div className="max-w-md">
+                  <ProjectTokenViewer projectId={project.id}/>
+              </div>
+          </section>
 
-        <div className="max-w-md flex flex-col items-stretch gap-3">
-          <ProjectRemovalButton project={project} />
-        </div>
-      </section>
-    </div>
+          <hr className="border-neutral-200"/>
+
+          <section>
+              <h2 className="text-xl font-medium text-red-500">
+                  Danger zone
+              </h2>
+              <p className="text-sm text-gray-600 mb-3">
+                  Once you delete a project, there is no going back. Please be certain.
+              </p>
+
+              <ProjectRemovalButton project={project}/>
+          </section>
+      </div>
   )
 }

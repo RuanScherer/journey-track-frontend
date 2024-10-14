@@ -9,7 +9,7 @@ import { InviteMembersConfirmation } from "../../_components/InviteMembersConfir
 import { InviteMembersForm } from "../../_components/InviteMembersForm";
 import { InviteMembersProvider } from "../../_contexts/InviteMembersContext";
 
-interface ProjectPageProps {
+interface ProjectOnboardingInviteMembersPageProps {
   params: {
     id: string
   }
@@ -24,7 +24,7 @@ async function getProject(projectId: string) {
   return response.data
 }
 
-export default async function ProjectOnboardingInviteMembersPage({ params }: ProjectPageProps) {
+export default async function ProjectOnboardingInviteMembersPage({ params }: ProjectOnboardingInviteMembersPageProps) {
   const project = await getProject(params.id)
 
   if (!project) {
